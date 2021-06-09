@@ -4,27 +4,29 @@ namespace Patterns_and_Best_Practices_ProdC
 {
     class Program
     {
-        public static void PrintStringInfo(string s)
+        public static string Who(bool hasConsent, string name, int? age)
         {
-            if (string.IsNullOrEmpty(s))
+            if (!hasConsent)
             {
-                Console.WriteLine($"'{s}' is null or empty");
+                return "No consent was given";
             }
 
-            if (string.IsNullOrWhiteSpace(s))
+            if (string.IsNullOrEmpty(name))
             {
-                Console.WriteLine($"'{s}' is null or whitespace");
+                return age.HasValue ? $"A {age} years old person" : "Unknown";
             }
 
-            Console.WriteLine();
+            return age.HasValue ? $"{name} ({age} years old)" : name;
         }
 
         static void Main(string[] args)
         {
-            PrintStringInfo(null);
-            PrintStringInfo("");
-            PrintStringInfo("   ");
-            PrintStringInfo("Andrea");
+            Console.WriteLine(Who(true, "Andrea", 33));
+            Console.WriteLine(Who(true, "Andrea", null));
+            Console.WriteLine(Who(true, null, 33));
+            Console.WriteLine(Who(true, null, null));
+            Console.WriteLine(Who(false, null, null));
         }
+    }
     }
 }
