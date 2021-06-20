@@ -6,4 +6,8 @@
     <RootNamespace>Patterns_and_Best_Practices_ProdC</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
 </Project>
